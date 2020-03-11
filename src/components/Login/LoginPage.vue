@@ -29,19 +29,12 @@
 
                 </v-col>
             </v-row>
-
-            <feedback />
         </v-container>
 </template>
 
 <script>
-    import feedback from '../feedback/Feedback.vue'
-
     export default {
         name: 'LoginPage',
-        components: {
-            feedback
-        },
         data() {
             return {
                 token: '',
@@ -54,6 +47,7 @@
                     this.$router.push('/book')
                 } else {
                     this.$store.commit('showErrorMessage', 'Você deve informar um token')
+                    this.showMessage = true
                 }
             },
             loginGuest() {

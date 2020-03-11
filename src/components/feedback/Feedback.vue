@@ -4,7 +4,6 @@
             {{ message }}
 
             <v-btn
-                color="pink"
                 text
                 @click="showMessage = false"
             >
@@ -30,7 +29,7 @@
         methods: {
             setMessage() {
                 this.message = this.$store.state.message.text
-                this.color = this.$store.message.type == 'Error' ? 'error' : 'success'
+                this.color = this.$store.state.message.type == 'Error' ? 'error' : 'success'
                 this.showMessage = true
             }
         }

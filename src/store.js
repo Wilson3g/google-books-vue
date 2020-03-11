@@ -7,7 +7,8 @@ export default new Vuex.Store({
     state: {
         authToken: '',
         message: {
-
+            text: '',
+            type: '',
         }
     },
     mutations: {
@@ -23,7 +24,7 @@ export default new Vuex.Store({
         showSuccessMessage(state, payload) {
             state.message = {
                 text: payload,
-                type: 'Error'
+                type: 'Success'
             }
         }
     }
