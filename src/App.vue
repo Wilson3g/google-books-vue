@@ -2,7 +2,10 @@
   <v-app>
     <app-header />
 
-    <router-view />
+    <v-content>
+      <router-view />
+    </v-content>
+    
     <feedback />
   </v-app>
 </template>
