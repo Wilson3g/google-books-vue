@@ -1,0 +1,30 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+    state: {
+        authToken: '',
+        message: {
+
+        }
+    },
+    mutations: {
+        setAuthToken(state, payload) {
+            state.authToken = payload
+        },
+        showErrorMessage(state, payload) {
+            state.message = {
+                text: payload,
+                type: 'Error'
+            }
+        },
+        showSuccessMessage(state, payload) {
+            state.message = {
+                text: payload,
+                type: 'Error'
+            }
+        }
+    }
+})
