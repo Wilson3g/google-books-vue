@@ -2,7 +2,13 @@
     <div>
         <v-row>
             <v-col cols="12"> 
-                <v-text-field v-model="search" @change="doSearch" label="Pesquise algo..." />
+                <v-text-field v-model="search" @input="doSearch" label="Pesquise algo..." />
+            </v-col>
+        </v-row>
+
+        <v-row justify="center">
+            <v-col cols='12' md="4" class="text-center" v-if="!search">
+                <p class="overline">Digite algo para pesquisar!</p>
             </v-col>
         </v-row>
 
@@ -49,6 +55,9 @@
                         this.bookList = res.data.items
                         this.searchOnGoing = false
                     })
+                } else {
+                    this.search = null
+                    this.bookList = []
                 }
             }
         }
