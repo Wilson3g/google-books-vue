@@ -26,9 +26,9 @@
                     </v-chip>
                 </div>
                 
-                <div class="mt-4">    
+                <div v-if="book.volumeInfo.previewLink" class="mt-4">    
                     <v-divider class="mb-2"/>
-                    <v-btn class="mt-2" text @click="goToPreviewPage()">Ver preview</v-btn>
+                    <v-btn class="mt-2" text @click="goToPreviewPage(book)">Ver preview</v-btn>
                 </div>
 
             </v-col>
@@ -38,8 +38,10 @@
 
 <script>
     import axios from 'axios'
+    import bookService from './bookService'
 
     export default {
+        mixins: [bookService],
         name: 'BookEntryPage',
         data() {
             return {
@@ -52,9 +54,7 @@
             })
         },
         methods: {
-            goToPreviewPage() {
-                window.open(this.book.volumeInfo.previewLink, '_blank')
-            }
+            
         }
     }
 </script>
