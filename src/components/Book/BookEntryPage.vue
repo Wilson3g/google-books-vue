@@ -11,19 +11,24 @@
 
                 <p class="mt2">{{ book.volumeInfo.description }}</p>
 
-                <v-subheader>Autor</v-subheader>
-                <v-chip class="mb-2" v-for="(author, i) in book.volumeInfo.authors" :key='i'>
-                    {{ author }}
-                </v-chip>
+                <div v-if="book.volumeInfo.authors && book.volumeInfo.authors.length">
+                    <v-subheader>Autor</v-subheader>
+                    <v-chip class="mb-2" v-for="author in book.volumeInfo.authors" :key='author'>
+                        {{ author }}
+                    </v-chip>    
+                </div>
+                
 
-                <v-subheader>Categorias</v-subheader>
-                <v-chip class="mb-2" v-for="(categories, i) in book.volumeInfo.categories" :key='i'>
-                    {{ categories }}
-                </v-chip>
+                <div v-if="book.volumeInfo.categories && book.volumeInfo.categories.length">
+                    <v-subheader>Categorias</v-subheader>
+                    <v-chip class="mb-2" v-for="categories in book.volumeInfo.categories" :key='categories'>
+                        {{ categories }}
+                    </v-chip>
+                </div>
                 
                 <div class="mt-4">    
                     <v-divider class="mb-2"/>
-                    <v-btn class="mt-2" text @click="goTopreview">Ver preview</v-btn>
+                    <v-btn class="mt-2" text @click="goToPreviewPage()">Ver preview</v-btn>
                 </div>
 
             </v-col>
@@ -47,8 +52,7 @@
             })
         },
         methods: {
-            goToPreview() {
-                console.log('00')
+            goToPreviewPage() {
                 window.open(this.book.volumeInfo.previewLink, '_blank')
             }
         }
