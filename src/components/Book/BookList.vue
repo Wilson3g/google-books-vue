@@ -15,18 +15,10 @@
             <loading :condition="searchOnGoing">
                 <v-row>
                     <v-col  cols="12" md="3" lg="2" v-for="(books, i) in bookList" :key="i">
-                        <v-card class="mx-auto">
-                            <v-card-title>{{ books.volumeInfo.title }}</v-card-title>
-                            <v-card-text>{{ books.volumeInfo.subtitle }}</v-card-text>
-
-                            <v-card-actions>
-                                <v-btn text small color="primary">Ver detalhes</v-btn>
-                            </v-card-actions>
-                        </v-card>
+                        <book-item :books="books" /> 
                     </v-col>
                 </v-row>
             </loading>
-                
     </div>
     
 </template>
@@ -34,11 +26,13 @@
 <script>
     import axios from 'axios'
     import loading from '../loading/Loading'
+    import bookItem from './BookItem'
 
     export default {
         name: 'BookList',
         components: {
-            loading
+            loading,
+            bookItem
         },
         data() {
             return {
