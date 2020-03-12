@@ -7,24 +7,20 @@
             </v-col>
         </v-row>
 
-        <v-row cols="12" md="3" v-for="books in bookList" :key="books">
-            {{ books.title }}
-        </v-row>
+        <book-list>
+
+        </book-list>
     </v-container>
 </template>
 
 <script>
+    
+    import BookList from './BookList'
+
     export default {
         name: 'BookListPage',
-        data() {
-            return {
-                bookList: [
-                    {title: 'Livro 1'},
-                    {title: 'Livro 2'},
-                    {title: 'Livro 3'},
-                    {title: 'Livro 4'},
-                ]
-            }
-        }
+        components: {
+            BookList
+        },
     }
 </script>
