@@ -1,8 +1,14 @@
 <template>
     <div>
-        <v-card class="mx-auto book-card">
+        <v-card class="mx-auto">
             <span>{{ shelf.title }}</span>
         </v-card>
+
+        <v-card-text>
+            <span>Numero de livros:
+                <span class="font-weight-medium ml-2">{{ shelf.volumeCount }}</span>
+            </span>
+        </v-card-text>
     </div>
 </template>
 

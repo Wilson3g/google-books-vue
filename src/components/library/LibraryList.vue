@@ -14,7 +14,7 @@
     import loading from '../loading/Loading'
     import libraryItem from './LibraryItem'
     import api from '../api/api'
-//102585049439214881490
+    
     export default {
         name: 'LibraryList',
         mixins: [api],
@@ -29,8 +29,10 @@
             }
         },
         created() {
-            this.get('').then(res => {
-                
+            this.searchOnGoing = true
+            this.get('/users/102585049439214881490/bookshelves').then(res => {
+                this.shelfList = res.data.items
+                this.searchOnGoing = false
             })
         }
     }
