@@ -7,9 +7,8 @@
             </v-col>
         </v-row>
 
-        <book-list>
-
-        </book-list>
+        <book-list />
+        
     </v-container>
 </template>
 
