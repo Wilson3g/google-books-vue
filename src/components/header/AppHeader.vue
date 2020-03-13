@@ -4,10 +4,10 @@
         app
         dark
     >
-        <v-toolbar-title>Projeto vue </v-toolbar-title>
+        <v-toolbar-title>Vue book list</v-toolbar-title>
 
         <v-spacer />
-        <v-toolbar-items v-if="$store.state.logged">
+        <v-toolbar-items>
             <v-btn @click="goToBooks" text>Livros</v-btn> 
             <v-btn @click="goToCollection" text>Minha Coleção</v-btn> 
             <v-btn @click="logout" text>Sair</v-btn> 
@@ -25,11 +25,10 @@
                 this.$router.push('/book')
             },
             goToCollection() {
-                this.$router.push('/collection')
+                this.$router.push('/library')
             },
             logout() {
                 this.$store.commit('setAuthToken', '')
-                this.$store.commit('setLogged', false)
                 this.$router.push('/')
             }
         }

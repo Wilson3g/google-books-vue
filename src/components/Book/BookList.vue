@@ -2,7 +2,11 @@
     <div>
         <v-row>
             <v-col cols="12"> 
-                <v-text-field v-model="search" @input="doSearch" label="Pesquise algo..." />
+                <v-text-field 
+                    v-model="search" 
+                    @input="doSearch" 
+                    label="Pesquise algo..."
+                />
             </v-col>
         </v-row>
 
@@ -24,35 +28,45 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import api from '../api/api'
     import loading from '../loading/Loading'
     import bookItem from './BookItem'
+    // import search from '../search/SearchInputField'
 
     export default {
         name: 'BookList',
+        mixins: [api],
         components: {
             loading,
-            bookItem
+            bookItem,
+            // search
         },
         data() {
             return {
                 bookList: [],
                 search: '',
-                searchOnGoing: false
+                searchOnGoing: false,
+                lastChange: 0
             }
         },
         methods: {
             doSearch() {
-                if(this.search) {
-                    this.searchOnGoing = true
-                    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.search}`).then(res => {
-                        this.bookList = res.data.items
-                        this.searchOnGoing = false
-                    })
-                } else {
-                    this.search = null
-                    this.bookList = []
-                }
+                this.lastChange = new Date().getTime()
+
+                setTimeout(() => {
+                    if(new Date().getTime() >= this.lastChange + 300) {
+                        if(this.search) {
+                            this.searchOnGoing = true
+                            this.get(`/volumes?q=${this.search}`).then(res => {
+                                this.bookList = res.data.items
+                                this.searchOnGoing = false
+                            })
+                        } else {
+                            this.search = null
+                            this.bookList = []
+                        }
+                    }
+                }, 500);
             }
         }
     }

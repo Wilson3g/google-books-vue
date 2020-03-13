@@ -20,5 +20,10 @@
       appHeader
     },
     name: 'App',
+    creaated() {
+      if(window.localStorage.authToken) {
+        this.$store.commit('setAuthToken', window.localStorage.authToken)
+      }
+    }
   };
 </script>

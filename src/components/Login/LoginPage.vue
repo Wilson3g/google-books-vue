@@ -43,12 +43,12 @@
         methods: {
             login() {
                 if(this.token) {
+                    window.localStorage.authToken = this.token
                     this.$store.commit('setAuthToken', this.token)
-                    this.$store.commit('setLogged', true)
                     this.$router.push('/book')
                 } else {
                     this.$store.commit('showErrorMessage', 'Você deve informar um token')
-                    this.$store.commit('setLogged', true)
+                    this.$store.commit('setLogged', false)
                     this.showMessage = true
                 }
             },
