@@ -1,6 +1,6 @@
 <template>
     <v-card class="mx-auto book-card">
-        <img :src="books.volumeInfo.imageLinks.smallThumbnail" alt="" class="text-center">
+        <img :src="books.volumeInfo.imageLinks.smallThumbnail" height="200px" width="100%" alt="" class="text-center">
         <v-card-title>
             <h4>
                 {{ books.volumeInfo.title.substring(0, maxTitleLength) }}
@@ -8,16 +8,19 @@
                     ...
                 </span>
             </h4>
-            
         </v-card-title>
         
         <v-card-text>
             {{ books.volumeInfo.subtitle || "Sem descrição" }}
         </v-card-text>
 
-        <v-card-actions>
-            <v-btn text small color="primary" @click="goToEntryPage">Ver detalhes</v-btn>
-            <v-btn text small color="primary" v-if="books.volumeInfo.previewLink" @click="goToPreviewPage(books)">Preview</v-btn>
+        <v-card-actions justify="center">
+            <v-btn
+                text
+                color="deep-purple accent-4"
+            >
+                Detalhes
+            </v-btn>
         </v-card-actions>
     </v-card>
 </template>

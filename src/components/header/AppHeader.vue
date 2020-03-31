@@ -1,6 +1,6 @@
 <template>
     <v-app-bar 
-        color="green accent-4"
+        color="blue accent-4"
         app
         dark
     >
