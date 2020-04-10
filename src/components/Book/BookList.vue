@@ -2,10 +2,17 @@
     <v-container>
         <v-row>
             <v-col cols="12"> 
-                <v-text-field 
+                <v-text-field
                     v-model="search" 
                     @input="doSearch" 
-                    label="Pesquise algo..."
+                    hide-details="false"
+                    prepend-inner-icon="mdi-magnify"
+                    solo
+                    rounded
+                    clear-icon="mdi-close-circle"
+                    clearable
+                    label="Digite o texto da sua pesquisa"
+                    type="text"
                 />
             </v-col>
         </v-row>

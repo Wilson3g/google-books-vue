@@ -1,13 +1,15 @@
 <template>
     <v-app-bar 
-        color="blue accent-4"
+        class="secondary--text"
+        color="white accent-4"
+        outline
         app
         dark
     >
         <v-toolbar-title>Vue book list</v-toolbar-title>
 
         <v-spacer />
-        <v-toolbar-items>
+        <v-toolbar-items class="secondary--text">
             <v-btn @click="goToBooks" text>Livros</v-btn> 
             <v-btn @click="goToCollection" text>Minha Coleção</v-btn> 
             <v-btn @click="logout" text>Sair</v-btn> 
